@@ -1,13 +1,7 @@
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-from rest_framework import generics, status
+from rest_framework import viewsets
 from .models import User
-from .serializer import UserSerializer
+from .serializers import UserSerializer
 
-class UserListCreate(generics.ListCreateAPIView):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-
-class UserRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
